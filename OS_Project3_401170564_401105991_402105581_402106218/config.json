@@ -1,0 +1,28 @@
+{
+  "process": {
+    "terminal": false,
+    "args": ["/bin/bash"],
+    "env": ["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"],
+    "cwd": "/"
+  },
+  "mounts": [
+    {
+      "destination": "/proc",
+      "type": "proc",
+      "source": "proc"
+    }
+  ],
+  "linux": {
+    "namespaces": [
+      { "type": "pid" },
+      { "type": "mount" },
+      { "type": "network" },
+      { "type": "ipc" },
+      { "type": "uts" }
+    ],
+    "resources": {
+      "memory": { "limit": 536870912 },
+      "cpu": { "shares": 1024 }
+    }
+  }
+}
